@@ -15,24 +15,12 @@ export const FormsWrapper = styled.View`
 width: 100%;
 padding:0 27px ;
 
-margin-top: 50px;
-margin-bottom: 47px;
+margin-top: 10px;
+margin-bottom: 35px;
 `;
 
-export const OuthersChanges = styled.View`
-width: 100%;
-flex-direction: row;
 
-align-items: center;
-justify-content: space-between;
 
-margin-top: 28px;
-margin-bottom: 26px;
-`;
-
-export const SingOut = styled.TouchableOpacity``;
-
-export const ForgotPassword = styled.TouchableOpacity``;
 
 export const Title = styled.Text`
 font-family: ${({theme})=>theme.fonts.regular};
@@ -46,7 +34,7 @@ export const SocialLoginWrapper = styled.View`
 align-items: center;
 flex-direction: row;
 
-margin-top: 50px;
+margin-top: 23px;
 `;
 
 export const AppleLogin = styled.TouchableOpacity`
