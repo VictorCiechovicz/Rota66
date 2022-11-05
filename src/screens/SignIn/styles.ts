@@ -6,27 +6,51 @@ export const Container = styled.View`
 flex: 1;
 background-color: ${({theme}) => theme.colors.primary};
 
-
 align-items: center;
 
-
 `;
 
 
-
-
-export const Logo = styled.Image`
-width: ${RFValue(149)}px;
-height: ${RFValue(145)}px;
-
-
-margin-top:15px;
-margin-bottom: 50px;
-
-`;
-
-export const InputsWrapper = styled.View`
+export const FormsWrapper = styled.View`
 width: 100%;
 padding:0 27px ;
 
+margin-top: 50px;
+margin-bottom: 47px;
 `;
+
+export const SocialLoginWrapper = styled.View`
+align-items: center;
+flex-direction: row;
+
+margin-top: 50px;
+`;
+
+export const OuthersChanges = styled.View`
+width: 100%;
+flex-direction: row;
+
+align-items: center;
+justify-content: space-between;
+
+margin-top: 28px;
+margin-bottom: 26px;
+`;
+
+export const SingOut = styled.TouchableOpacity``;
+
+export const ForgotPassword = styled.TouchableOpacity``;
+
+export const Title = styled.Text`
+font-family: ${({theme})=>theme.fonts.regular};
+font-size: ${RFValue(14)}px;
+
+color: ${({theme})=>theme.colors.title};
+
+`;
+
+export const AppleLogin = styled.TouchableOpacity`
+margin-right: 40px;
+`;
+
+export const GoogleLogin = styled.TouchableOpacity``;

@@ -8,11 +8,13 @@ padding: 17px 26px;
 font-family: ${({theme}) => theme.fonts.regular};
 font-size: ${RFValue(18)}px;
 
-color: ${({theme})=> theme.colors.secundary};
+
+color: ${({theme})=> theme.colors.shape};
+
 
 border:${({theme})=> theme.colors.shape};
 border-radius: 8px;
 
-margin-bottom: 10px;
+margin-bottom: 14px;
 
 `;
