@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "Rota66",
+    "slug": "Rota66",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
