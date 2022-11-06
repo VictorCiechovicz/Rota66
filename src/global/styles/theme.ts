@@ -14,6 +14,8 @@ export default {
         text:'#959595',
         
         shape:'#BBBBBB',
+
+        shape_light:'rgba(187,187,187,0.6)',
         
          
   

@@ -10,7 +10,7 @@ import {
 } from '@expo-google-fonts/roboto'
 
 import { Loading } from './src/components/Loading'
-import { ForgotPassword } from './src/screens/ForgotPassword'
+import { Home} from './src/screens/Home'
 
 export default function App() {
   const [fontsLoaded] = useFonts({ Roboto_400Regular, Roboto_500Medium })
@@ -18,7 +18,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <StatusBar style="light" />
-      {fontsLoaded ? <ForgotPassword /> : <Loading />}
+      {fontsLoaded ? <Home /> : <Loading />}
     </ThemeProvider>
   )
 }
