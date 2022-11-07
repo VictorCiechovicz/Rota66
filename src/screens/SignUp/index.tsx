@@ -1,6 +1,7 @@
 import React from 'react'
 import { RFValue } from 'react-native-responsive-fontsize'
 import { TouchableWithoutFeedback, Keyboard } from 'react-native'
+import { useTheme } from 'styled-components'
 
 import {
   Container,
@@ -19,6 +20,7 @@ import GoogleLogo from '../../assets/GoogleLogo.svg'
 import AppleLogo from '../../assets/AppleLogo.svg'
 
 export function SignUp() {
+  const theme= useTheme()
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <Container>
@@ -32,30 +34,30 @@ export function SignUp() {
           <Input
             placeholder="Nome"
             autoCorrect={false}
-            placeholderTextColor={'#FBB03F'}
+            placeholderTextColor={theme.colors.secundary}
           />
           <Input
             placeholder="E-mail"
             autoCorrect={false}
-            placeholderTextColor={'#FBB03F'}
+            placeholderTextColor={theme.colors.secundary}
           />
           <Input
             placeholder="Data de Nascimento"
             dataDetectorTypes={'calendarEvent'}
             autoCorrect={false}
-            placeholderTextColor={'#FBB03F'}
+            placeholderTextColor={theme.colors.secundary}
           />
           <Input
             placeholder="Senha"
             autoCorrect={false}
             secureTextEntry
-            placeholderTextColor={'#FBB03F'}
+            placeholderTextColor={theme.colors.secundary}
           />
           <Input
             placeholder="Confirmar Senha"
             autoCorrect={false}
             secureTextEntry
-            placeholderTextColor={'#FBB03F'}
+            placeholderTextColor={theme.colors.secundary}
           />
 
           <Button
