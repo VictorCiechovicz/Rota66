@@ -10,7 +10,8 @@ import {
 } from '@expo-google-fonts/roboto'
 
 import { Loading } from './src/components/Loading'
-import { Home} from './src/screens/Home'
+
+import { Setings } from './src/screens/Setings'
 
 export default function App() {
   const [fontsLoaded] = useFonts({ Roboto_400Regular, Roboto_500Medium })
@@ -18,7 +19,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <StatusBar style="light" />
-      {fontsLoaded ? <Home /> : <Loading />}
+      {fontsLoaded ? <Setings /> : <Loading />}
     </ThemeProvider>
   )
 }
