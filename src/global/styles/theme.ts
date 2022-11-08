@@ -2,6 +2,7 @@ export default {
 
   colors:{
         primary:'#132440',
+        pimary_light:'#1E2E49',
   
         secundary:'#FBB03F',
       
