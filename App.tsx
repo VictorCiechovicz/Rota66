@@ -11,7 +11,7 @@ import {
 
 import { Loading } from './src/components/Loading'
 
-import { Geneses } from './src/screens/OldTestament/ChaptersBooks/Geneses'
+import { Geneses } from './src/screens/OldTestament/ChaptersOldBooks/Geneses'
 
 
 export default function App() {
