@@ -4,7 +4,7 @@ import { TouchableOpacityProps } from 'react-native'
 import { Container, Button, Icon, Title } from './styles'
 
 interface Props extends TouchableOpacityProps {
-  title: string
+  title?: string
   onPress: () => void
 }
 export function Header({ title, onPress, ...rest }: Props) {
