@@ -5,10 +5,10 @@ import { ButtonChapter } from '../../../../components/ButtonChapter'
 import { Header } from '../../../../components/Header'
 import { ScrollView } from 'react-native'
 
-export function Geneses() {
+export function Ezequiel() {
   return (
     <Container>
-      <Header onPress={() => {}} title="Geneses" />
+      <Header onPress={() => {}} title="Ezequiel" />
       <ScrollView showsVerticalScrollIndicator={false}>
         <ChappterWrapper>
           <ButtonChapter onPress={() => {}} title="1" />
@@ -59,8 +59,6 @@ export function Geneses() {
           <ButtonChapter onPress={() => {}} title="46" />
           <ButtonChapter onPress={() => {}} title="47" />
           <ButtonChapter onPress={() => {}} title="48" />
-          <ButtonChapter onPress={() => {}} title="49" />
-          <ButtonChapter onPress={() => {}} title="50" />
         </ChappterWrapper>
       </ScrollView>
     </Container>

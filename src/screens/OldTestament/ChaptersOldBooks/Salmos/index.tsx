@@ -5,10 +5,10 @@ import { ButtonChapter } from '../../../../components/ButtonChapter'
 import { Header } from '../../../../components/Header'
 import { ScrollView } from 'react-native'
 
-export function Geneses() {
+export function Salmos() {
   return (
     <Container>
-      <Header onPress={() => {}} title="Geneses" />
+      <Header onPress={() => {}} title="Salmos" />
       <ScrollView showsVerticalScrollIndicator={false}>
         <ChappterWrapper>
           <ButtonChapter onPress={() => {}} title="1" />
@@ -61,6 +61,106 @@ export function Geneses() {
           <ButtonChapter onPress={() => {}} title="48" />
           <ButtonChapter onPress={() => {}} title="49" />
           <ButtonChapter onPress={() => {}} title="50" />
+          <ButtonChapter onPress={() => {}} title="51" />
+          <ButtonChapter onPress={() => {}} title="52" />
+          <ButtonChapter onPress={() => {}} title="53" />
+          <ButtonChapter onPress={() => {}} title="54" />
+          <ButtonChapter onPress={() => {}} title="55" />
+          <ButtonChapter onPress={() => {}} title="56" />
+          <ButtonChapter onPress={() => {}} title="57" />
+          <ButtonChapter onPress={() => {}} title="58" />
+          <ButtonChapter onPress={() => {}} title="59" />
+          <ButtonChapter onPress={() => {}} title="60" />
+          <ButtonChapter onPress={() => {}} title="61" />
+          <ButtonChapter onPress={() => {}} title="62" />
+          <ButtonChapter onPress={() => {}} title="63" />
+          <ButtonChapter onPress={() => {}} title="64" />
+          <ButtonChapter onPress={() => {}} title="65" />
+          <ButtonChapter onPress={() => {}} title="66" />
+          <ButtonChapter onPress={() => {}} title="67" />
+          <ButtonChapter onPress={() => {}} title="68" />
+          <ButtonChapter onPress={() => {}} title="69" />
+          <ButtonChapter onPress={() => {}} title="70" />
+          <ButtonChapter onPress={() => {}} title="71" />
+          <ButtonChapter onPress={() => {}} title="72" />
+          <ButtonChapter onPress={() => {}} title="73" />
+          <ButtonChapter onPress={() => {}} title="74" />
+          <ButtonChapter onPress={() => {}} title="75" />
+          <ButtonChapter onPress={() => {}} title="76" />
+          <ButtonChapter onPress={() => {}} title="77" />
+          <ButtonChapter onPress={() => {}} title="78" />
+          <ButtonChapter onPress={() => {}} title="79" />
+          <ButtonChapter onPress={() => {}} title="80" />
+          <ButtonChapter onPress={() => {}} title="81" />
+          <ButtonChapter onPress={() => {}} title="82" />
+          <ButtonChapter onPress={() => {}} title="83" />
+          <ButtonChapter onPress={() => {}} title="84" />
+          <ButtonChapter onPress={() => {}} title="85" />
+          <ButtonChapter onPress={() => {}} title="86" />
+          <ButtonChapter onPress={() => {}} title="87" />
+          <ButtonChapter onPress={() => {}} title="88" />
+          <ButtonChapter onPress={() => {}} title="89" />
+          <ButtonChapter onPress={() => {}} title="90" />
+          <ButtonChapter onPress={() => {}} title="91" />
+          <ButtonChapter onPress={() => {}} title="92" />
+          <ButtonChapter onPress={() => {}} title="93" />
+          <ButtonChapter onPress={() => {}} title="94" />
+          <ButtonChapter onPress={() => {}} title="95" />
+          <ButtonChapter onPress={() => {}} title="96" />
+          <ButtonChapter onPress={() => {}} title="97" />
+          <ButtonChapter onPress={() => {}} title="98" />
+          <ButtonChapter onPress={() => {}} title="99" />
+          <ButtonChapter onPress={() => {}} title="100" />
+          <ButtonChapter onPress={() => {}} title="101" />
+          <ButtonChapter onPress={() => {}} title="102" />
+          <ButtonChapter onPress={() => {}} title="103" />
+          <ButtonChapter onPress={() => {}} title="104" />
+          <ButtonChapter onPress={() => {}} title="105" />
+          <ButtonChapter onPress={() => {}} title="106" />
+          <ButtonChapter onPress={() => {}} title="107" />
+          <ButtonChapter onPress={() => {}} title="108" />
+          <ButtonChapter onPress={() => {}} title="109" />
+          <ButtonChapter onPress={() => {}} title="110" />
+          <ButtonChapter onPress={() => {}} title="111" />
+          <ButtonChapter onPress={() => {}} title="112" />
+          <ButtonChapter onPress={() => {}} title="113" />
+          <ButtonChapter onPress={() => {}} title="114" />
+          <ButtonChapter onPress={() => {}} title="115" />
+          <ButtonChapter onPress={() => {}} title="116" />
+          <ButtonChapter onPress={() => {}} title="117" />
+          <ButtonChapter onPress={() => {}} title="118" />
+          <ButtonChapter onPress={() => {}} title="119" />
+          <ButtonChapter onPress={() => {}} title="120" />
+          <ButtonChapter onPress={() => {}} title="121" />
+          <ButtonChapter onPress={() => {}} title="122" />
+          <ButtonChapter onPress={() => {}} title="123" />
+          <ButtonChapter onPress={() => {}} title="124" />
+          <ButtonChapter onPress={() => {}} title="125" />
+          <ButtonChapter onPress={() => {}} title="126" />
+          <ButtonChapter onPress={() => {}} title="127" />
+          <ButtonChapter onPress={() => {}} title="128" />
+          <ButtonChapter onPress={() => {}} title="129" />
+          <ButtonChapter onPress={() => {}} title="130" />
+          <ButtonChapter onPress={() => {}} title="131" />
+          <ButtonChapter onPress={() => {}} title="132" />
+          <ButtonChapter onPress={() => {}} title="133" />
+          <ButtonChapter onPress={() => {}} title="134" />
+          <ButtonChapter onPress={() => {}} title="135" />
+          <ButtonChapter onPress={() => {}} title="136" />
+          <ButtonChapter onPress={() => {}} title="137" />
+          <ButtonChapter onPress={() => {}} title="138" />
+          <ButtonChapter onPress={() => {}} title="139" />
+          <ButtonChapter onPress={() => {}} title="140" />
+          <ButtonChapter onPress={() => {}} title="141" />
+          <ButtonChapter onPress={() => {}} title="142" />
+          <ButtonChapter onPress={() => {}} title="143" />
+          <ButtonChapter onPress={() => {}} title="144" />
+          <ButtonChapter onPress={() => {}} title="145" />
+          <ButtonChapter onPress={() => {}} title="146" />
+          <ButtonChapter onPress={() => {}} title="147" />
+          <ButtonChapter onPress={() => {}} title="148" />
+          <ButtonChapter onPress={() => {}} title="149" />
+          <ButtonChapter onPress={() => {}} title="150" />
         </ChappterWrapper>
       </ScrollView>
     </Container>
