@@ -11,8 +11,7 @@ import {
 
 import { Loading } from './src/components/Loading'
 
-import { Geneses } from './src/screens/OldTestament/ChaptersOldBooks/Geneses'
-
+import { Routes } from './src/routes'
 
 export default function App() {
   const [fontsLoaded] = useFonts({ Roboto_400Regular, Roboto_500Medium })
@@ -20,7 +19,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <StatusBar style="light" />
-      {fontsLoaded ? <Geneses /> : <Loading />}
+      {fontsLoaded ? <Routes /> : <Loading />}
     </ThemeProvider>
   )
 }

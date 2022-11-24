@@ -30,7 +30,7 @@ margin-top: 28px;
 margin-bottom: 26px;
 `;
 
-export const SingOut = styled.TouchableOpacity``;
+export const SingUp = styled.TouchableOpacity``;
 
 export const ForgotPassword = styled.TouchableOpacity``;
 

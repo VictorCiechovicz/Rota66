@@ -15,17 +15,11 @@ import { ButtonSubject } from '../../components/ButtonSubject'
 
 import BackgroundBible from '../../assets/BackgroundBible.png'
 
-
-
 export function Home() {
   return (
     <Container>
       <Header>
-        <Search 
-        placeholder='Serch...'
-        autoCorrect={false}
-       
-        />
+        <Search placeholder="Serch..." autoCorrect={false} />
 
         <TestamentWrapper>
           <OldTestament source={BackgroundBible}>
@@ -45,10 +39,7 @@ export function Home() {
         <ButtonSubject title="Filhos" onPress={() => {}} />
         <ButtonSubject title="Pais" onPress={() => {}} />
         <ButtonSubject title="Casamento" onPress={() => {}} />
-        <ButtonSubject title="Familia" onPress={() => {}} />
-        <ButtonSubject title="Natal" onPress={() => {}} />
-        <ButtonSubject title="Filhos" onPress={() => {}} />
-      </Content>
+             </Content>
     </Container>
   )
 }

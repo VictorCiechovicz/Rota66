@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigation } from '@react-navigation/native'
 import { RFValue } from 'react-native-responsive-fontsize'
 import { TouchableWithoutFeedback, Keyboard } from 'react-native'
 import { useTheme } from 'styled-components'
@@ -7,7 +8,7 @@ import {
   Container,
   FormsWrapper,
   OuthersChanges,
-  SingOut,
+  SingUp,
   ForgotPassword,
   Title,
   SocialLoginWrapper,
@@ -23,7 +24,18 @@ import GoogleLogo from '../../assets/GoogleLogo.svg'
 import AppleLogo from '../../assets/AppleLogo.svg'
 
 export function SignIn() {
+
+  const navigation = useNavigation()
   const theme = useTheme()
+
+
+  function handleNewUser() {
+    navigation.navigate('SignUp')
+  }
+  function forgotPassword() {
+    navigation.navigate('ForgotPassword')
+  }
+
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <Container>
@@ -46,11 +58,11 @@ export function SignIn() {
             placeholderTextColor={theme.colors.secundary}
           />
           <OuthersChanges>
-            <SingOut>
+            <SingUp onPress={handleNewUser} >
               <Title>Primeiro acesso</Title>
-            </SingOut>
+            </SingUp>
 
-            <ForgotPassword>
+            <ForgotPassword onPress={forgotPassword}>
               <Title>Esqueceu a senha?</Title>
             </ForgotPassword>
           </OuthersChanges>

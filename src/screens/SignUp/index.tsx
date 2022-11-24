@@ -1,10 +1,14 @@
 import React from 'react'
+import { useNavigation } from '@react-navigation/native'
 import { RFValue } from 'react-native-responsive-fontsize'
 import { TouchableWithoutFeedback, Keyboard } from 'react-native'
 import { useTheme } from 'styled-components'
 
 import {
   Container,
+  HeaderWrapper,
+  GoBack,
+  Icon,
   FormsWrapper,
   Title,
   SocialLoginWrapper,
@@ -20,15 +24,24 @@ import GoogleLogo from '../../assets/GoogleLogo.svg'
 import AppleLogo from '../../assets/AppleLogo.svg'
 
 export function SignUp() {
-  const theme= useTheme()
+  const theme = useTheme()
+  const navigation = useNavigation()
+
+  function handleGoback() {
+    navigation.goBack()
+  }
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <Container>
-        <LogoRota66
-          width={RFValue(100)}
-          height={RFValue(100)}
-          style={{ marginTop: 50 }}
-        />
+        <HeaderWrapper>
+          <GoBack onPress={handleGoback}>
+            <Icon name="arrowleft" />
+          </GoBack>
+          <LogoRota66
+            width={RFValue(100)}
+            height={RFValue(100)}
+                  />
+        </HeaderWrapper>
 
         <FormsWrapper>
           <Input
@@ -60,11 +73,7 @@ export function SignUp() {
             placeholderTextColor={theme.colors.secundary}
           />
 
-          <Button
-            title="Salvar"
-            onPress={() => {}}
-            style={{ marginTop: 6 }}
-          />
+          <Button title="Salvar" onPress={() => {}} style={{ marginTop: 6 }} />
         </FormsWrapper>
 
         <Title>Ou realizar login com</Title>

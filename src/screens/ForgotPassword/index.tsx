@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigation } from '@react-navigation/native'
 import { RFValue } from 'react-native-responsive-fontsize'
 import { TouchableWithoutFeedback, Keyboard } from 'react-native'
 
@@ -12,11 +13,17 @@ import { useTheme } from 'styled-components'
 
 export function ForgotPassword() {
   const theme = useTheme()
+  const navigation = useNavigation()
+
+  function handleGoback() {
+    navigation.goBack()
+  }
+
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <Container>
         <HeaderWrapper>
-          <GoBack>
+          <GoBack onPress={handleGoback}>
             <Icon name="arrowleft" />
           </GoBack>
 

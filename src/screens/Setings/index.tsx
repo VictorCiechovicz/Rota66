@@ -15,17 +15,6 @@ export function Setings() {
       <ButtonsWrapper>
         <ButtonSetings
           onPress={() => {}}
-          title="Conta"
-          nameIcon={
-            <FontAwesome5
-              name="user-circle"
-              size={24}
-              color={theme.colors.shape}
-            />
-          }
-        />
-        <ButtonSetings
-          onPress={() => {}}
           title="Download"
           nameIcon={
             <AntDesign name="download" size={24} color={theme.colors.shape} />
