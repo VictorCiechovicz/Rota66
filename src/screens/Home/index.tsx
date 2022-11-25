@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigation } from '@react-navigation/native'
 
 import {
   Container,
@@ -14,21 +15,34 @@ import {
 import { ButtonSubject } from '../../components/ButtonSubject'
 
 import BackgroundBible from '../../assets/BackgroundBible.png'
+import { TouchableOpacity } from 'react-native'
 
 export function Home() {
+  const navigation = useNavigation()
+
+  function handleOpenNewTestament() {
+    navigation.navigate('NewTestament')
+  }
+  function handleOpenOldTestament() {
+    navigation.navigate('OldTestament')
+  }
   return (
     <Container>
       <Header>
         <Search placeholder="Serch..." autoCorrect={false} />
 
         <TestamentWrapper>
-          <OldTestament source={BackgroundBible}>
-            <TitleTestament>Antigo Testamento</TitleTestament>
-          </OldTestament>
+          <TouchableOpacity onPress={handleOpenOldTestament}>
+            <OldTestament source={BackgroundBible}>
+              <TitleTestament>Antigo Testamento</TitleTestament>
+            </OldTestament>
+          </TouchableOpacity>
 
-          <NewTestament source={BackgroundBible}>
-            <TitleTestament>Antigo Testamento</TitleTestament>
-          </NewTestament>
+          <TouchableOpacity onPress={handleOpenNewTestament}>
+            <NewTestament source={BackgroundBible}>
+              <TitleTestament>Novo Testamento</TitleTestament>
+            </NewTestament>
+          </TouchableOpacity>
         </TestamentWrapper>
       </Header>
 
@@ -39,7 +53,7 @@ export function Home() {
         <ButtonSubject title="Filhos" onPress={() => {}} />
         <ButtonSubject title="Pais" onPress={() => {}} />
         <ButtonSubject title="Casamento" onPress={() => {}} />
-             </Content>
+      </Content>
     </Container>
   )
 }

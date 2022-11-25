@@ -38,8 +38,8 @@ export function SignUp() {
             <Icon name="arrowleft" />
           </GoBack>
           <LogoRota66
-            width={RFValue(100)}
-            height={RFValue(100)}
+            width={RFValue(129)}
+            height={RFValue(125)}
                   />
         </HeaderWrapper>
 
@@ -74,7 +74,7 @@ export function SignUp() {
           />
 
           <Button title="Salvar" onPress={() => {}} style={{ marginTop: 6 }} />
-        </FormsWrapper>
+       
 
         <Title>Ou realizar login com</Title>
 
@@ -87,6 +87,7 @@ export function SignUp() {
             <GoogleLogo width={RFValue(35)} height={RFValue(35)} />
           </GoogleLogin>
         </SocialLoginWrapper>
+        </FormsWrapper>
       </Container>
     </TouchableWithoutFeedback>
   )

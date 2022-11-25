@@ -3,7 +3,7 @@ import { useTheme } from 'styled-components'
 
 import { Ionicons, MaterialIcons, Feather } from '@expo/vector-icons'
 
-import { Home } from '../screens/Home'
+import { StackRouteHome } from './stack2.routes'
 import { PlayList } from '../screens/PlayList'
 import { Perfil } from '../screens/Perfil'
 import { Setings } from '../screens/Setings'
@@ -18,24 +18,22 @@ export function TabRouts() {
     <Navigator
       screenOptions={{
         headerShown: false,
-         tabBarStyle: {
+        tabBarStyle: {
           backgroundColor: theme.colors.primary,
-          height: 68
+          height: 55
         },
         tabBarLabelStyle: {
-          marginBottom: 5,
+           marginBottom: 5,
           fontSize: RFValue(10),
-          fontFamily:theme.fonts.regular
-          
+          fontFamily: theme.fonts.regular
         },
         tabBarActiveTintColor: theme.colors.secundary,
-        tabBarInactiveTintColor: theme.colors.shape,
-       
+        tabBarInactiveTintColor: theme.colors.shape
       }}
     >
       <Screen
         name="Home"
-        component={Home}
+        component={StackRouteHome}
         options={{
           tabBarIcon: ({ color }) => (
             <Ionicons name="home-outline" size={27} color={color} />
@@ -61,7 +59,7 @@ export function TabRouts() {
         }}
       />
       <Screen
-        name="Configuracoes"
+        name="Configurações"
         component={Setings}
         options={{
           tabBarIcon: ({ color }) => (

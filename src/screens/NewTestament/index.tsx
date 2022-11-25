@@ -1,14 +1,21 @@
 import React from 'react'
+import { useNavigation } from '@react-navigation/native'
 import { ScrollView } from 'react-native'
 import { ButtonOptionsBooks } from '../../components/ButtonOptionsBooks'
 import { Header } from '../../components/Header'
 import { Container, ButtonsWrapper } from './styles'
 
 export function NewTestament() {
+  const navigation = useNavigation()
+
+  function handleGoback() {
+    navigation.goBack()
+  }
+
   return (
     <Container>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Header onPress={() => {}} />
+        <Header onPress={handleGoback} />
 
         <ButtonsWrapper>
           <ButtonOptionsBooks onPress={() => {}} title="Mateus" />

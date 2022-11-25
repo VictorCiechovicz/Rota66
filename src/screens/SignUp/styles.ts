@@ -5,17 +5,17 @@ import { AntDesign } from '@expo/vector-icons'
 export const Container = styled.View`
 flex: 1;
 background-color: ${({theme}) => theme.colors.primary};
-align-items: center;
 
 `;
 export const HeaderWrapper = styled.View`
 flex-direction: row;
 padding:0 27px ;
 
-margin-top: 50px;
+margin-top: 46px;
 `;
+
 export const GoBack = styled.TouchableOpacity`
-margin-left:31px;
+margin-right:75px;
 
 `;
 
@@ -30,10 +30,9 @@ width: 100%;
 padding:0 27px ;
 
 margin-top: 10px;
-margin-bottom: 35px;
+
+align-items: center;
 `;
-
-
 
 
 export const Title = styled.Text`
@@ -42,6 +41,7 @@ font-size: ${RFValue(14)}px;
 
 color: ${({theme})=>theme.colors.title};
 
+margin-top: 20px;
 `;
 
 export const SocialLoginWrapper = styled.View`
