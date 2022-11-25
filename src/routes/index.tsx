@@ -9,7 +9,7 @@ import { StackRouteSignInUser } from './stack1.routes'
 export function Routes() {
   return (
     <NavigationContainer>
-      <StackRouteSignInUser />
+      <TabRouts />
     </NavigationContainer>
   )
 }
