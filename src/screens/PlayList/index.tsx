@@ -1,6 +1,6 @@
 import React from 'react'
 import { FlatList } from 'react-native'
-import { FontAwesome } from '@expo/vector-icons'
+
 import { PlayListItem } from '../../components/PlayListItem'
 import {
   Container,
@@ -13,7 +13,15 @@ import {
 } from './styles'
 
 export function PlayList() {
-  const data = [{}]
+  const data = [
+    {
+      id: '1',
+      title: 'Estudo 200 - Crônicas 1-6',
+      image:
+        'https://s1.static.brasilescola.uol.com.br/be/conteudo/images/imagem-em-lente-convexa.jpg',
+      duration: '45'
+    }
+  ]
 
   return (
     <Container>
@@ -40,7 +48,7 @@ export function PlayList() {
         ) : (
           <Circle>
             <Icon name="music-off" />
-             <Text>Não possui nenhum audio cadastrado. {'\n'}</Text>
+            <Text>Não possui nenhum audio cadastrado. {'\n'}</Text>
           </Circle>
         )}
       </PlayListWrapper>
