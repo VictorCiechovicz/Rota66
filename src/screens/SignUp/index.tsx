@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
+import auth from '@react-native-firebase/auth'
 import { useNavigation } from '@react-navigation/native'
 import { RFValue } from 'react-native-responsive-fontsize'
-import { TouchableWithoutFeedback, Keyboard } from 'react-native'
+import { TouchableWithoutFeedback, Keyboard, Alert } from 'react-native'
 import { useTheme } from 'styled-components'
 
 import {
@@ -23,13 +24,51 @@ import LogoRota66 from '../../assets/LogoRota66.svg'
 import GoogleLogo from '../../assets/GoogleLogo.svg'
 import AppleLogo from '../../assets/AppleLogo.svg'
 
+import { Loading } from '../../components/Loading'
+
 export function SignUp() {
+  const [isLoading, setIsLoading] = useState(false)
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
   const theme = useTheme()
   const navigation = useNavigation()
 
   function handleGoback() {
     navigation.goBack()
   }
+
+  async function handleNewUser() {
+    if (!email || !password) {
+      return Alert.alert('Entrar', 'Preencha todos os campos.')
+    }
+    setIsLoading(true)
+    auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        Alert.alert('Cadastro', 'Usuario cadastrado com sucesso!')
+        navigation.goBack()
+      })
+      .catch(error => {
+        console.log(error)
+        setIsLoading(false)
+        //auth/email-already-in-use
+        //auth/invalid-email
+        //auth/operation-not-allowed
+        //auth/weak-password
+        if (error.code === 'auth/invalid-email') {
+          return Alert.alert('Entrar', 'E-mail inválido.')
+        }
+
+        return Alert.alert('Entrar', 'Não foi possível acessar')
+      })
+      .finally(() => setIsLoading(false))
+  }
+
+  if (isLoading) {
+    return <Loading />
+  }
+
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <Container>
@@ -37,10 +76,7 @@ export function SignUp() {
           <GoBack onPress={handleGoback}>
             <Icon name="arrowleft" />
           </GoBack>
-          <LogoRota66
-            width={RFValue(129)}
-            height={RFValue(125)}
-                  />
+          <LogoRota66 width={RFValue(129)} height={RFValue(125)} />
         </HeaderWrapper>
 
         <FormsWrapper>
@@ -50,43 +86,36 @@ export function SignUp() {
             placeholderTextColor={theme.colors.secundary}
           />
           <Input
+            onChangeText={setEmail}
             placeholder="E-mail"
             autoCorrect={false}
             placeholderTextColor={theme.colors.secundary}
           />
           <Input
-            placeholder="Data de Nascimento"
-            dataDetectorTypes={'calendarEvent'}
-            autoCorrect={false}
-            placeholderTextColor={theme.colors.secundary}
-          />
-          <Input
+            onChangeText={setPassword}
             placeholder="Senha"
             autoCorrect={false}
             secureTextEntry
             placeholderTextColor={theme.colors.secundary}
           />
-          <Input
-            placeholder="Confirmar Senha"
-            autoCorrect={false}
-            secureTextEntry
-            placeholderTextColor={theme.colors.secundary}
+
+          <Button
+            title="Salvar"
+            onPress={handleNewUser}
+            style={{ marginTop: 6 }}
           />
 
-          <Button title="Salvar" onPress={() => {}} style={{ marginTop: 6 }} />
-       
+          <Title>Ou realizar login com</Title>
 
-        <Title>Ou realizar login com</Title>
+          <SocialLoginWrapper>
+            <AppleLogin>
+              <AppleLogo width={RFValue(35)} height={RFValue(35)} />
+            </AppleLogin>
 
-        <SocialLoginWrapper>
-          <AppleLogin>
-            <AppleLogo width={RFValue(35)} height={RFValue(35)} />
-          </AppleLogin>
-
-          <GoogleLogin>
-            <GoogleLogo width={RFValue(35)} height={RFValue(35)} />
-          </GoogleLogin>
-        </SocialLoginWrapper>
+            <GoogleLogin>
+              <GoogleLogo width={RFValue(35)} height={RFValue(35)} />
+            </GoogleLogin>
+          </SocialLoginWrapper>
         </FormsWrapper>
       </Container>
     </TouchableWithoutFeedback>
