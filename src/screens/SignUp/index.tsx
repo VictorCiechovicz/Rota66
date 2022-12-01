@@ -1,5 +1,6 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import auth from '@react-native-firebase/auth'
+import { GoogleSignin } from '@react-native-google-signin/google-signin'
 import { useNavigation } from '@react-navigation/native'
 import { RFValue } from 'react-native-responsive-fontsize'
 import { TouchableWithoutFeedback, Keyboard, Alert } from 'react-native'
@@ -28,7 +29,7 @@ import { Loading } from '../../components/Loading'
 
 export function SignUp() {
   const [isLoading, setIsLoading] = useState(false)
-  const [nome, setNome] = useState('')
+  const [userData, setUserData] = useState({})
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -38,33 +39,20 @@ export function SignUp() {
   function handleGoback() {
     navigation.goBack()
   }
-  
-  useEffect(() => {
-    const user = auth().currentUser
-    user.providerData.forEach(userInfo => {
-      console.log(userInfo)
-      setNome(userInfo.displayName)
-     })
-  }, [])
 
-  async function handleNewUser() {
-    if (!email || !password || !nome) {
+  async function handleNewUserWithEmailAndPassword() {
+    if (!email || !password) {
       return Alert.alert('Entrar', 'Preencha todos os campos.')
     }
-    const update = {
-      displayName: nome,
-     }
+
     setIsLoading(true)
     auth()
-       .createUserWithEmailAndPassword(email, password)
-
-       await auth() 
-       .currentUser.updateProfile(update)
-          .then(() => {
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => {
         Alert.alert('Cadastro', 'Usuario cadastrado com sucesso!')
         navigation.goBack()
       })
-      
+
       .catch(error => {
         console.log(error)
         setIsLoading(false)
@@ -81,7 +69,39 @@ export function SignUp() {
       .finally(() => setIsLoading(false))
   }
 
- 
+  /*   async function handleNewUserWithApple() {
+    const appleAuthRequestResponse = await appleAuth.performRequest({
+    requestedOperation: appleAuth.Operation.LOGIN,
+    requestedScopes: [appleAuth.Scope.EMAIL, appleAuth.Scope.FULL_NAME],
+  });
+
+  // Ensure Apple returned a user identityToken
+  if (!appleAuthRequestResponse.identityToken) {
+    throw new Error('Apple Sign-In failed - no identify token returned');
+  }
+
+  // Create a Firebase credential from the response
+  const { identityToken, nonce } = appleAuthRequestResponse;
+  const appleCredential = auth.AppleAuthProvider.credential(identityToken, nonce);
+
+  // Sign the user in with the credential
+  return auth().signInWithCredential(appleCredential);
+}
+ */
+  const handleNewUserWithGoogle = async () => {
+    await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true })
+    const { idToken } = await GoogleSignin.signIn()
+    const googleCredential = auth.GoogleAuthProvider.credential(idToken)
+
+    return auth().signInWithCredential(googleCredential)
+  }
+
+  useEffect(() => {
+    GoogleSignin.configure({
+      webClientId:
+        '355377107221-o0tksbtvhqh3087badjt9hrcbledldtj.apps.googleusercontent.com'
+    })
+  }, [])
 
   if (isLoading) {
     return <Loading />
@@ -99,12 +119,6 @@ export function SignUp() {
 
         <FormsWrapper>
           <Input
-            onChangeText={setNome}
-            placeholder="Nome"
-            autoCorrect={false}
-            placeholderTextColor={theme.colors.secundary}
-          />
-          <Input
             onChangeText={setEmail}
             placeholder="E-mail"
             autoCorrect={false}
@@ -120,7 +134,7 @@ export function SignUp() {
 
           <Button
             title="Salvar"
-            onPress={handleNewUser}
+            onPress={handleNewUserWithEmailAndPassword}
             style={{ marginTop: 6 }}
           />
 
@@ -131,7 +145,11 @@ export function SignUp() {
               <AppleLogo width={RFValue(35)} height={RFValue(35)} />
             </AppleLogin>
 
-            <GoogleLogin>
+            <GoogleLogin
+              onPress={() =>
+                handleNewUserWithGoogle().then(res => setUserData(res.user))
+              }
+            >
               <GoogleLogo width={RFValue(35)} height={RFValue(35)} />
             </GoogleLogin>
           </SocialLoginWrapper>
