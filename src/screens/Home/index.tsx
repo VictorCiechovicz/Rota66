@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import auth from '@react-native-firebase/auth'
 import { useNavigation } from '@react-navigation/native'
 
 import {
@@ -26,6 +27,14 @@ export function Home() {
   function handleOpenOldTestament() {
     navigation.navigate('OldTestament')
   }
+
+  useEffect(() => {
+    const user = auth().currentUser
+    user.providerData.forEach(userInfo => {
+      console.log(userInfo)
+    })
+  }, [])
+
   return (
     <Container>
       <Header>

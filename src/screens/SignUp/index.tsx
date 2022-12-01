@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import auth from '@react-native-firebase/auth'
 import { useNavigation } from '@react-navigation/native'
 import { RFValue } from 'react-native-responsive-fontsize'
@@ -28,6 +28,7 @@ import { Loading } from '../../components/Loading'
 
 export function SignUp() {
   const [isLoading, setIsLoading] = useState(false)
+  const [nome, setNome] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -37,18 +38,33 @@ export function SignUp() {
   function handleGoback() {
     navigation.goBack()
   }
+  
+  useEffect(() => {
+    const user = auth().currentUser
+    user.providerData.forEach(userInfo => {
+      console.log(userInfo)
+      setNome(userInfo.displayName)
+     })
+  }, [])
 
   async function handleNewUser() {
-    if (!email || !password) {
+    if (!email || !password || !nome) {
       return Alert.alert('Entrar', 'Preencha todos os campos.')
     }
+    const update = {
+      displayName: nome,
+     }
     setIsLoading(true)
     auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then(() => {
+       .createUserWithEmailAndPassword(email, password)
+
+       await auth() 
+       .currentUser.updateProfile(update)
+          .then(() => {
         Alert.alert('Cadastro', 'Usuario cadastrado com sucesso!')
         navigation.goBack()
       })
+      
       .catch(error => {
         console.log(error)
         setIsLoading(false)
@@ -64,6 +80,8 @@ export function SignUp() {
       })
       .finally(() => setIsLoading(false))
   }
+
+ 
 
   if (isLoading) {
     return <Loading />
@@ -81,6 +99,7 @@ export function SignUp() {
 
         <FormsWrapper>
           <Input
+            onChangeText={setNome}
             placeholder="Nome"
             autoCorrect={false}
             placeholderTextColor={theme.colors.secundary}
