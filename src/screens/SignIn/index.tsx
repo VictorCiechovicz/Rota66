@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { GoogleSignin } from '@react-native-google-signin/google-signin'
 import { useNavigation } from '@react-navigation/native'
 import { RFValue } from 'react-native-responsive-fontsize'
 import { TouchableWithoutFeedback, Keyboard, Alert } from 'react-native'
@@ -30,6 +31,7 @@ export function SignIn() {
   const [isLoading, setIsLoading] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [userData, setUserData] = useState({})
 
   const navigation = useNavigation()
   const theme = useTheme()
@@ -67,6 +69,41 @@ export function SignIn() {
         return Alert.alert('Entrar', 'Não foi possível acessar')
       })
   }
+
+  const handleNewUserWithGoogle = async () => {
+    await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true })
+    const { idToken } = await GoogleSignin.signIn()
+    const googleCredential = auth.GoogleAuthProvider.credential(idToken)
+
+    return auth().signInWithCredential(googleCredential)
+  }
+
+  useEffect(() => {
+    GoogleSignin.configure({
+      webClientId:
+        '355377107221-o0tksbtvhqh3087badjt9hrcbledldtj.apps.googleusercontent.com'
+    })
+  }, [])
+
+  /*   async function handleNewUserWithApple() {
+    const appleAuthRequestResponse = await appleAuth.performRequest({
+    requestedOperation: appleAuth.Operation.LOGIN,
+    requestedScopes: [appleAuth.Scope.EMAIL, appleAuth.Scope.FULL_NAME],
+  });
+
+  // Ensure Apple returned a user identityToken
+  if (!appleAuthRequestResponse.identityToken) {
+    throw new Error('Apple Sign-In failed - no identify token returned');
+  }
+
+  // Create a Firebase credential from the response
+  const { identityToken, nonce } = appleAuthRequestResponse;
+  const appleCredential = auth.AppleAuthProvider.credential(identityToken, nonce);
+
+  // Sign the user in with the credential
+  return auth().signInWithCredential(appleCredential);
+}
+ */
 
   if (isLoading) {
     return <Loading />
@@ -115,7 +152,13 @@ export function SignIn() {
           </AppleLogin>
 
           <GoogleLogin>
-            <GoogleLogo width={RFValue(35)} height={RFValue(35)} />
+            <GoogleLogo
+              width={RFValue(35)}
+              height={RFValue(35)}
+              onPress={() =>
+                handleNewUserWithGoogle().then(res => setUserData(res.user))
+              }
+            />
           </GoogleLogin>
         </SocialLoginWrapper>
       </Container>

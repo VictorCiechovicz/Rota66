@@ -34,25 +34,3 @@ margin-top: 10px;
 align-items: center;
 `;
 
-
-export const Title = styled.Text`
-font-family: ${({theme})=>theme.fonts.regular};
-font-size: ${RFValue(14)}px;
-
-color: ${({theme})=>theme.colors.title};
-
-margin-top: 20px;
-`;
-
-export const SocialLoginWrapper = styled.View`
-align-items: center;
-flex-direction: row;
-
-margin-top: 23px;
-`;
-
-export const AppleLogin = styled.TouchableOpacity`
-margin-right: 40px;
-`;
-
-export const GoogleLogin = styled.TouchableOpacity``;
