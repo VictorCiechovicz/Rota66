@@ -71,11 +71,12 @@ export function SignIn() {
   }
 
   const handleNewUserWithGoogle = async () => {
+    setIsLoading(true)
     await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true })
     const { idToken } = await GoogleSignin.signIn()
     const googleCredential = auth.GoogleAuthProvider.credential(idToken)
-
-    return auth().signInWithCredential(googleCredential)
+    setIsLoading(false)
+    return auth().signInWithCredential(googleCredential) 
   }
 
   useEffect(() => {

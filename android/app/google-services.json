@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "355377107221-9o9523edgm0jf9ck6dg2gbf8pqtrq186.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rota66",
+            "certificate_hash": "f4960c3543125d9fd01f447040b3da256c24667e"
+          }
+        },
+        {
           "client_id": "355377107221-o0tksbtvhqh3087badjt9hrcbledldtj.apps.googleusercontent.com",
           "client_type": 3
         }
