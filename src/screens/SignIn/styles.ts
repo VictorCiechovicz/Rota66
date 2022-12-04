@@ -1,4 +1,4 @@
-import { RFValue } from "react-native-responsive-fontsize";
+import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
 
 
@@ -13,7 +13,9 @@ align-items: center;
 
 export const FormsWrapper = styled.View`
 width: 100%;
-padding:0 27px ;
+height:${RFPercentage(40)}px;
+padding-left:${RFPercentage(4)}px;
+padding-right:${RFPercentage(4)}px;
 
 margin-top: 50px;
 margin-bottom: 47px;

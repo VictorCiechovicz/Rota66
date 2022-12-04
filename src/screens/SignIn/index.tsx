@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { GoogleSignin } from '@react-native-google-signin/google-signin'
+import {
+  GoogleSignin,
+  statusCodes
+} from '@react-native-google-signin/google-signin'
 import { useNavigation } from '@react-navigation/native'
 import { RFValue } from 'react-native-responsive-fontsize'
 import { TouchableWithoutFeedback, Keyboard, Alert } from 'react-native'
@@ -31,7 +34,6 @@ export function SignIn() {
   const [isLoading, setIsLoading] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [userData, setUserData] = useState({})
 
   const navigation = useNavigation()
   const theme = useTheme()
@@ -70,13 +72,18 @@ export function SignIn() {
       })
   }
 
-  const handleNewUserWithGoogle = async () => {
-    setIsLoading(true)
-    await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true })
-    const { idToken } = await GoogleSignin.signIn()
-    const googleCredential = auth.GoogleAuthProvider.credential(idToken)
-    setIsLoading(false)
-    return auth().signInWithCredential(googleCredential) 
+ 
+  async function handleNewUserWithGoogle() {
+    // Check if your device supports Google Play
+    await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
+    // Get the users ID token
+    const { idToken } = await GoogleSignin.signIn();
+  
+    // Create a Google credential with the token
+    const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+  
+    // Sign-in the user with the credential
+    return auth().signInWithCredential(googleCredential);
   }
 
   useEffect(() => {
@@ -109,6 +116,7 @@ export function SignIn() {
   if (isLoading) {
     return <Loading />
   }
+
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <Container>
@@ -156,9 +164,7 @@ export function SignIn() {
             <GoogleLogo
               width={RFValue(35)}
               height={RFValue(35)}
-              onPress={() =>
-                handleNewUserWithGoogle().then(res => setUserData(res.user))
-              }
+              onPress={handleNewUserWithGoogle}
             />
           </GoogleLogin>
         </SocialLoginWrapper>
