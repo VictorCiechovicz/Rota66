@@ -44,7 +44,12 @@ export function NewTestament() {
           <ButtonOptionsBooks onPress={() => {}} title="João II" />
           <ButtonOptionsBooks onPress={() => {}} title="João III" />
           <ButtonOptionsBooks onPress={() => {}} title="Judas" />
-          <ButtonOptionsBooks onPress={() => {}} title="Apocalipse" />
+          <ButtonOptionsBooks
+            onPress={() => {
+              navigation.navigate('Apocalipse')
+            }}
+            title="Apocalipse"
+          />
         </ButtonsWrapper>
       </ScrollView>
     </Container>

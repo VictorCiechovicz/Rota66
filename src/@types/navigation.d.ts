@@ -11,6 +11,7 @@ export declare global{
         HomeStack:undefined;
         NewTestament:undefined;
         OldTestament:undefined;
+        Apocalipse:undefined;
 
     }
   }
