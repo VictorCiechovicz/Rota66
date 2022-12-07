@@ -12,6 +12,8 @@ export declare global{
         NewTestament:undefined;
         OldTestament:undefined;
         Apocalipse:undefined;
+        Apocalipse1:undefined;
+
 
     }
   }

@@ -1,17 +1,29 @@
 import React from 'react'
 import { Container, ChappterWrapper } from './styles'
+import { useNavigation } from '@react-navigation/native'
 
 import { ButtonChapter } from '../../../../components/ButtonChapter'
 import { Header } from '../../../../components/Header'
 import { ScrollView } from 'react-native'
 
 export function Apocalipse() {
+  const navigation = useNavigation()
+
+  function handleGoback() {
+    navigation.goBack()
+  }
+
   return (
     <Container>
-      <Header onPress={() => {}} title="Apocalipse" />
+      <Header onPress={handleGoback} title="Apocalipse" />
       <ScrollView showsVerticalScrollIndicator={false}>
         <ChappterWrapper>
-          <ButtonChapter onPress={() => {}} title="1" />
+          <ButtonChapter
+            onPress={() => {
+              navigation.navigate('Apocalipse1')
+            }}
+            title="1"
+          />
           <ButtonChapter onPress={() => {}} title="2" />
           <ButtonChapter onPress={() => {}} title="3" />
           <ButtonChapter onPress={() => {}} title="4" />

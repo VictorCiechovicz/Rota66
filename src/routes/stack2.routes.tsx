@@ -7,7 +7,7 @@ import { OldTestament } from '../screens/OldTestament'
 
 //ChaptersNewTestaments
 import { Apocalipse } from '../screens/NewTestament/ChaptersNewBooks/Apocalipse'
-
+import { Apocalipse1 } from '../screens/NewTestament/ChaptersNewBooks/Apocalipse/1'
 
 export function StackRouteHome() {
   return (
@@ -16,7 +16,7 @@ export function StackRouteHome() {
       <Screen name="NewTestament" component={NewTestament} />
       <Screen name="OldTestament" component={OldTestament} />
       <Screen name="Apocalipse" component={Apocalipse} />
-
+      <Screen name="Apocalipse1" component={Apocalipse1} />
     </Navigator>
   )
 }
