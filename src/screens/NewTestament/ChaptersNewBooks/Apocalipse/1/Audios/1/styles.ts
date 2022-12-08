@@ -2,18 +2,13 @@ import styled from "styled-components/native";
 
 export const Container = styled.View`
 flex: 1;
-
 background-color: ${({theme})=>theme.colors.primary};
 
+padding: 0 10px;
+align-items: center;
 `;
 
 export const ChappterWrapper = styled.View`
 
-flex-direction: row;
-flex-wrap: wrap;
-
-padding: 0 10px;
-padding-bottom: 50px;
-justify-content:flex-start;
-
+padding: 0 30px ;
 `;

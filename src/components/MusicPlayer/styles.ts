@@ -7,7 +7,10 @@ import { AntDesign } from '@expo/vector-icons';
 export const Container = styled.View`
 flex: 1;
 background-color: ${({theme})=>theme.colors.primary};
+
+padding: 0px 30px ;
 `;
+
 export const ContentWrapper = styled.View`
 align-items: center;
 `;
@@ -16,7 +19,7 @@ export const Image = styled.ImageBackground`
 width: ${RFValue(300)}px;
 height: ${RFValue(300)}px;
 
-margin-top: 5px;
+margin-top: 1px;
 margin-bottom: 28px;
 `;
 
@@ -28,12 +31,43 @@ color: ${({theme})=>theme.colors.title};
 
 `;
 
+export const SliderWrapper = styled.View`
+margin-top: 30px;
+
+`;
+
+export const DurationSongsWrapper = styled.View`
+flex-direction: row;
+width:100%;
+padding: 5px 30px ;
+
+justify-content: space-between;
+
+
+
+`;
+
+export const FirstTime = styled.Text`
+font-family: ${({theme})=>theme.fonts.medium};
+font-size: ${RFValue(12)}px;
+
+color: ${({theme})=>theme.colors.shape};
+`;
+
+export const FinalTime = styled.Text`
+font-family: ${({theme})=>theme.fonts.medium};
+font-size: ${RFValue(12)}px;
+
+color: ${({theme})=>theme.colors.shape};
+`;
+
+
 export const ButtonWrapper = styled.View`
 flex-direction: row;
 align-items: center;
 
 
-margin-top:50px;
+margin-top:10px;
 
 `;
 
@@ -42,7 +76,7 @@ font-size: ${RFValue(28)}px;
 color: ${({theme})=>theme.colors.title};
 `;
 
-export const ButtonPause = styled(AntDesign)`
+export const ButtonCenter = styled(AntDesign)`
 font-size: ${RFValue(50)}px;
 color: ${({theme})=>theme.colors.title};
 

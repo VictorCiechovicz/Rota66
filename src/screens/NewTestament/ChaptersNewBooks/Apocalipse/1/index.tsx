@@ -10,15 +10,25 @@ import { VerseItem } from '../../../../../components/VerseItem'
 export function Apocalipse1() {
   const navigation = useNavigation()
 
+  function handleOpenAudio() {
+    navigation.navigate('ApocalipseAudio1')
+  }
+
   function handleGoback() {
     navigation.goBack()
   }
+
   return (
     <Container>
       <Header onPress={handleGoback} title="Apocalipse-1" />
       <ScrollView showsVerticalScrollIndicator={false}>
         <ChappterWrapper>
-          <VerseItem title="Esutdo de teste" duration="45" onPress={() => {}} />
+          <VerseItem
+            title="Estudo 200 - Crônicas 1-6"
+            duration="45"
+            onPressContent={handleOpenAudio}
+            onPressAddPlayList={() => {}}
+          />
         </ChappterWrapper>
       </ScrollView>
     </Container>

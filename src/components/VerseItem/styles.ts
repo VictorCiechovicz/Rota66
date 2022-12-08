@@ -6,12 +6,19 @@ import {MaterialIcons}from "@expo/vector-icons"
 export const Container = styled.View`
 flex: 1;
 background-color: ${({theme})=>theme.colors.primary};
-
 flex-direction: row;
 align-items: center;
 
 margin-bottom: 9px;
 `;
+
+
+export const ContentWrapper = styled.TouchableOpacity`
+flex-direction: row;
+align-items: center;
+
+`;
+
 
 export const Image = styled.ImageBackground`
 width: ${RFValue(80)}px;
@@ -20,8 +27,10 @@ height:${RFValue(80)}px;
 border-radius: 20px;
 `;
 
-export const ContentWrapper = styled.View`
+export const ContentFootWrapper = styled.View`
 padding-left: 8px;
+padding-right:60px
+
 `;
 
 export const Title = styled.Text`
@@ -38,9 +47,9 @@ color: ${({theme})=>theme.colors.text};
 `; 
 
 export const Icon = styled(MaterialIcons)`
-padding-left:70px ;
+padding-right:35px ;
 
-font-size: ${RFValue(25)}px;
+font-size: ${RFValue(30)}px;
 color: ${({theme})=>theme.colors.shape};
 
 `;

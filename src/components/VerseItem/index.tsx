@@ -4,6 +4,7 @@ import {
   Container,
   Image,
   ContentWrapper,
+  ContentFootWrapper,
   Title,
   Duration,
   Icon
@@ -14,25 +15,29 @@ import ImagePhater from '../../assets/ImagePatherMusicPlayer.png'
 interface Props extends TouchableOpacityProps {
   title: String
   duration: String
-   onPress: () => void
+  onPressContent: () => void
+  onPressAddPlayList: () => void
 }
 
 export function VerseItem({
   title,
   duration,
-  onPress,
+  onPressContent,
+  onPressAddPlayList,
   ...rest
 }: Props) {
   return (
     <Container>
-      <Image source={ImagePhater} />
+      <ContentWrapper onPress={onPressContent} {...rest}>
+        <Image source={ImagePhater} />
 
-      <ContentWrapper>
-        <Title>{title}</Title>
-        <Duration>{duration} min</Duration>
+        <ContentFootWrapper>
+          <Title>{title}</Title>
+          <Duration>{duration} min</Duration>
+        </ContentFootWrapper>
       </ContentWrapper>
 
-      <TouchableOpacity onPress={onPress} {...rest}>
+      <TouchableOpacity onPress={onPressAddPlayList} {...rest}>
         <Icon name="playlist-add" />
       </TouchableOpacity>
     </Container>
