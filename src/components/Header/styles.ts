@@ -11,7 +11,7 @@ flex-direction: row;
 justify-content: flex-start;
 align-items: center;
 
-padding-top: 70px;
+padding-top: 50px;
 padding-bottom:38px;
 padding-left:30px;
 `;
@@ -20,7 +20,7 @@ padding-left:30px;
 export const Button = styled.TouchableOpacity``;
 
 export const Icon = styled(AntDesign)`
-font-size: ${RFValue(26)}px;
+font-size: ${RFValue(30)}px;
 color: ${({theme})=>theme.colors.title};
 
 margin-right: 60px;
