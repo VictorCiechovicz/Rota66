@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Header } from '../Header'
+import { useAudioHelper } from '../../hooks/audio-helper'
 import Slider from '@react-native-community/slider'
 import { useTheme } from 'styled-components'
 
@@ -28,6 +28,8 @@ interface Props extends TouchableOpacityProps {
   onPressButtonPlay: () => void
   onPressButtonPause: () => void
   controlButtonCenter: boolean
+  currentTime: string
+  duration: number
 }
 
 export function MusicPlayer({
@@ -36,7 +38,9 @@ export function MusicPlayer({
   onPressButtonPass,
   onPressButtonPlay,
   onPressButtonPause,
-  controlButtonCenter = false
+  controlButtonCenter = false,
+  currentTime,
+  duration
 }: Props) {
   const theme = useTheme()
 
@@ -59,8 +63,8 @@ export function MusicPlayer({
         </SliderWrapper>
 
         <DurationSongsWrapper>
-          <FirstTime>00:00</FirstTime>
-          <FinalTime>00:00</FinalTime>
+          <FirstTime>{currentTime}</FirstTime>
+          <FinalTime>{duration}</FinalTime>
         </DurationSongsWrapper>
         <ButtonWrapper>
           <TouchableOpacity onPress={onPressButtonBack}>
