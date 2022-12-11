@@ -1,6 +1,6 @@
 import { RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
-import { AntDesign } from '@expo/vector-icons'; 
+import { AntDesign,Feather } from '@expo/vector-icons'; 
 
 
 
@@ -76,13 +76,23 @@ font-size: ${RFValue(28)}px;
 color: ${({theme})=>theme.colors.title};
 `;
 
-export const ButtonCenter = styled(AntDesign)`
+export const ButtonPlay = styled(AntDesign)`
 font-size: ${RFValue(50)}px;
 color: ${({theme})=>theme.colors.title};
 
 padding: 0 28px;
 
 `;
+
+export const ButtonPause = styled(Feather)`
+font-size: ${RFValue(50)}px;
+color: ${({theme})=>theme.colors.title};
+
+padding: 0 28px;
+
+`;
+
+
 
 export const ButtonBack  = styled(AntDesign)`
 font-size: ${RFValue(28)}px;

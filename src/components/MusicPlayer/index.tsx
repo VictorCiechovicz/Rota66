@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Header } from '../Header'
 import Slider from '@react-native-community/slider'
 import { useTheme } from 'styled-components'
@@ -14,7 +14,8 @@ import {
   FinalTime,
   ButtonWrapper,
   ButtonPass,
-  ButtonCenter,
+  ButtonPlay,
+  ButtonPause,
   ButtonBack
 } from './styles'
 import ImagePlayerMusic from '../../assets/ImagePatherMusicPlayer.png'
@@ -24,22 +25,24 @@ interface Props extends TouchableOpacityProps {
   title: string
   onPressButtonBack: () => void
   onPressButtonPass: () => void
-  onPressButtonCenter: () => void
-  nameButtonCenter: string
+  onPressButtonPlay: () => void
+  onPressButtonPause: () => void
+  controlButtonCenter: boolean
 }
 
 export function MusicPlayer({
   title,
   onPressButtonBack,
   onPressButtonPass,
-  onPressButtonCenter,
-  nameButtonCenter
+  onPressButtonPlay,
+  onPressButtonPause,
+  controlButtonCenter = false
 }: Props) {
   const theme = useTheme()
 
   return (
     <Container>
-         <ContentWrapper>
+      <ContentWrapper>
         <Image source={ImagePlayerMusic} />
         <Title>{title}</Title>
         <SliderWrapper>
@@ -64,9 +67,15 @@ export function MusicPlayer({
             <ButtonBack name="stepbackward" />
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={onPressButtonCenter}>
-            <ButtonCenter name={nameButtonCenter} />
-          </TouchableOpacity>
+          {controlButtonCenter ? (
+            <TouchableOpacity onPress={onPressButtonPause}>
+              <ButtonPause name="pause-circle" />
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity onPress={onPressButtonPlay}>
+              <ButtonPlay name="playcircleo" />
+            </TouchableOpacity>
+          )}
 
           <TouchableOpacity onPress={onPressButtonPass}>
             <ButtonPass name="stepforward" />

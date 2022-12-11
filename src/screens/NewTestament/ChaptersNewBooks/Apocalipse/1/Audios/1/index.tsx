@@ -8,7 +8,8 @@ import { MusicPlayer } from '../../../../../../../components/MusicPlayer'
 import SoundPlayer from 'react-native-sound-player'
 
 export function ApocalipseAudio1() {
-  const [sound, setSound] = useState()
+  const [controlButton, setControlButton] = useState(false)
+  const [controlButtonPlay, setControlButtonPlay] = useState(false)
 
   const navigation = useNavigation()
 
@@ -21,9 +22,23 @@ export function ApocalipseAudio1() {
       SoundPlayer.playUrl(
         'https://storage.googleapis.com/rota66audio/rota66_001.mp3'
       )
+      setControlButton(true)
+      setControlButtonPlay(true)
+    
     } catch (e) {
       console.log(`cannot play the sound file`, e)
     }
+  }
+
+  function resumeSong() {
+    SoundPlayer.resume()
+    setControlButton(true)
+  }
+
+  function stopSong() {
+    SoundPlayer.pause()
+    setControlButton(false)
+   
   }
 
   async function getInfo() {
@@ -34,22 +49,6 @@ export function ApocalipseAudio1() {
       console.log('There is no song playing', e)
     }
   }
-
-  function onPressPlayButton() {
-    playSong()
-    getInfo()
-  }
-
-function stop(){
-  SoundPlayer.pause()
-}
-
-function con(){
-  SoundPlayer.resume()
-}
-
-
-
 
   const songs = [
     {
@@ -86,10 +85,14 @@ function con(){
       <ChappterWrapper>
         <MusicPlayer
           title="Estudo 200 - Crônicas 1-6"
-          nameButtonCenter="playcircleo"
-          onPressButtonCenter={onPressPlayButton}
-          onPressButtonBack={con}
-          onPressButtonPass={stop}
+          onPressButtonBack={() => {}}
+          onPressButtonPass={() => {}}
+
+          onPressButtonPlay={!controlButtonPlay ? playSong : resumeSong}
+
+          onPressButtonPause={stopSong}
+
+          controlButtonCenter={controlButton}
         />
       </ChappterWrapper>
     </Container>
