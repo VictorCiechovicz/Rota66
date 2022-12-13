@@ -16,7 +16,9 @@ import {
   ButtonPass,
   ButtonPlay,
   ButtonPause,
-  ButtonBack
+  ButtonBack,
+  
+
 } from './styles'
 import ImagePlayerMusic from '../../assets/ImagePatherMusicPlayer.png'
 import { TouchableOpacity, TouchableOpacityProps } from 'react-native'
@@ -29,7 +31,12 @@ interface Props extends TouchableOpacityProps {
   onPressButtonPause: () => void
   controlButtonCenter: boolean
   currentTime: string
-  duration: number
+  duration: string
+  maximumValueSlider: number
+  valueSlider: number
+  onTouchStartSlider: () => void
+  onTouchEndSlider: () => void
+  onSlidingCompleteSlider: (seconds) => void
 }
 
 export function MusicPlayer({
@@ -40,7 +47,12 @@ export function MusicPlayer({
   onPressButtonPause,
   controlButtonCenter = false,
   currentTime,
-  duration
+  duration,
+  maximumValueSlider,
+  valueSlider,
+  onTouchStartSlider,
+  onTouchEndSlider,
+  onSlidingCompleteSlider
 }: Props) {
   const theme = useTheme()
 
@@ -52,13 +64,15 @@ export function MusicPlayer({
         <SliderWrapper>
           <Slider
             style={{ width: 350 }}
-            value={10}
             minimumValue={0}
-            maximumValue={100}
+            maximumValue={maximumValueSlider}
+            value={valueSlider}
             thumbTintColor={theme.colors.title}
             minimumTrackTintColor={theme.colors.secundary}
             maximumTrackTintColor={theme.colors.secundary}
-            onSlidingComplete={() => {}}
+            onTouchStart={onTouchStartSlider}
+            onTouchEnd={onTouchEndSlider}
+            onSlidingComplete={onSlidingCompleteSlider}
           />
         </SliderWrapper>
 
@@ -68,7 +82,8 @@ export function MusicPlayer({
         </DurationSongsWrapper>
         <ButtonWrapper>
           <TouchableOpacity onPress={onPressButtonBack}>
-            <ButtonBack name="stepbackward" />
+            <ButtonBack name="rotate-ccw" />
+         
           </TouchableOpacity>
 
           {controlButtonCenter ? (
@@ -81,8 +96,9 @@ export function MusicPlayer({
             </TouchableOpacity>
           )}
 
-          <TouchableOpacity onPress={onPressButtonPass}>
-            <ButtonPass name="stepforward" />
+          <TouchableOpacity onPress={onPressButtonPass} >
+            <ButtonPass name="rotate-cw" />
+           
           </TouchableOpacity>
         </ButtonWrapper>
       </ContentWrapper>

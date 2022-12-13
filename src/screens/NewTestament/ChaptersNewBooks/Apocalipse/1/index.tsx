@@ -17,6 +17,8 @@ export function Apocalipse1() {
   function handleGoback() {
     navigation.goBack()
   }
+ 
+
 
   return (
     <Container>

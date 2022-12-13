@@ -1,6 +1,6 @@
 import { RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
-import { AntDesign,Feather } from '@expo/vector-icons'; 
+import { FontAwesome,AntDesign,Feather } from '@expo/vector-icons'; 
 
 
 
@@ -39,7 +39,7 @@ margin-top: 30px;
 export const DurationSongsWrapper = styled.View`
 flex-direction: row;
 width:100%;
-padding: 5px 30px ;
+padding: 5px 22px ;
 
 justify-content: space-between;
 
@@ -71,8 +71,8 @@ margin-top:10px;
 
 `;
 
-export const ButtonPass = styled(AntDesign)`
-font-size: ${RFValue(28)}px;
+export const ButtonPass = styled(Feather)`
+font-size: ${RFValue(35)}px;
 color: ${({theme})=>theme.colors.title};
 `;
 
@@ -94,7 +94,8 @@ padding: 0 28px;
 
 
 
-export const ButtonBack  = styled(AntDesign)`
-font-size: ${RFValue(28)}px;
+export const ButtonBack  = styled(Feather)`
+font-size: ${RFValue(35)}px;
 color: ${({theme})=>theme.colors.title};
 `;
+
