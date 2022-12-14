@@ -15,6 +15,8 @@ export declare global{
         Apocalipse1:undefined;
         ApocalipseAudio1:undefined;
 
+        Details:{audiosId:string}
+
 
     }
   }

@@ -9,17 +9,12 @@ import { useAudioHelper } from '../../../../../../../hooks/audio-helper'
 
 import { Loading } from '../../../../../../../components/Loading'
 
-export type MusicProps = {
-  id: string
-  title: string
-  time: string
-  url: string
-}
+
 
 export function ApocalipseAudio1() {
   const [isLoading, setIsLoading] = useState(true)
   const [controlButton, setControlButton] = useState(false)
-  const [musics, setMusics] = useState<MusicProps[]>([])
+  
 
   const player = useAudioHelper({
     listSounds: [
@@ -43,35 +38,7 @@ export function ApocalipseAudio1() {
     player.status === 'play' ? setControlButton(true) : setControlButton(false)
   }, [player.status])
 
-  useEffect(() => {
-    setIsLoading(true)
-    const musicInf = firestore()
-      .collection<MusicProps>('audios')
-      .where(
-        'livro',
-        '==',
-        'Apocalipse' || 'capitulo',
-        '==',
-        '1' || 'seq',
-        '==',
-        '1'
-      )
-      .onSnapshot(snapshot => {
-        const data = snapshot.docs.map(doc => {
-          const { title, time, url } = doc.data()
-
-          return {
-            id: doc.id,
-            title,
-            time,
-            url
-          }
-        })
-        setMusics(data)
-        setIsLoading(false)
-      })
-    return musicInf
-  }, [estaNaTela])
+  
 
   if (isLoading) {
     return <Loading />
