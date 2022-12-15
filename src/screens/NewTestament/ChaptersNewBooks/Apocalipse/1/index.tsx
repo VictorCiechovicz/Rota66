@@ -75,37 +75,25 @@ export function Apocalipse1() {
       <Header onPress={handleGoback} title="Apocalipse-1" />
       <ScrollView showsVerticalScrollIndicator={false}>
         <ChappterWrapper>
-
-
-        {isLoading ?
-  <Loading />:
-
-
-  <FlatList
-  data={audios}
-  keyExtractor={item => item.id}
-  renderItem={({ item }) => (
-    <VerseItem
-    data={item}
-    title={item.title}
-    duration={item.time}
-    onPressContent={() => handleOpenDetails(item.id)}}
-    onPressAddPlayList={() => {}}
-  />
-
-  )} 
-     showsVerticalScrollIndicator={false}
-  contentContainerStyle={{ paddingBottom: 100 }}
-       />
-
-  }
-
-
-
-
-
-
-      
+          {isLoading ? (
+            <Loading />
+          ) : (
+            <FlatList
+              data={audios}
+              keyExtractor={item => item.id}
+              renderItem={({ item }) => (
+                <VerseItem
+                  data={item}
+                  title={item.title}
+                  duration={item.time}
+                  onPressContent={() => handleOpenDetails(item.id)}
+                  onPressAddPlayList={() => {}}
+                />
+              )}
+              showsVerticalScrollIndicator={false}
+              contentContainerStyle={{ paddingBottom: 100 }}
+            />
+          )}
         </ChappterWrapper>
       </ScrollView>
     </Container>
