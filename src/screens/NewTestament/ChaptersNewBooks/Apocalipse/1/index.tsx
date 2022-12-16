@@ -9,6 +9,8 @@ import { Header } from '../../../../../components/Header'
 import { ScrollView } from 'react-native'
 import { VerseItem } from '../../../../../components/VerseItem'
 import { Loading } from '../../../../../components/Loading'
+import { MaterialIcons } from '@expo/vector-icons'
+import { useTheme } from 'styled-components/native'
 
 export type AudioProps = {
   id: string
@@ -16,7 +18,7 @@ export type AudioProps = {
   capitulo: string
   livro: string
   playlist: string
-  time: string
+  duration: string
   url: string
 }
 
@@ -24,6 +26,7 @@ export function Apocalipse1() {
   const [isLoading, setIsLoading] = useState(true)
   const [audios, setAudios] = useState<AudioProps[]>([])
 
+  const theme = useTheme()
   const navigation = useNavigation()
   const estaNaTela = useIsFocused()
 
@@ -48,7 +51,7 @@ export function Apocalipse1() {
       .where('capitulo', '==', '1')
       .onSnapshot(snapshot => {
         const data = snapshot.docs.map(doc => {
-          const { title, capitulo, livro, playlist, time, url } = doc.data()
+          const { title, capitulo, livro, playlist, duration, url } = doc.data()
 
           return {
             id: doc.id,
@@ -56,7 +59,7 @@ export function Apocalipse1() {
             capitulo,
             livro,
             playlist,
-            time,
+            duration,
             url
           }
         })
@@ -83,9 +86,8 @@ export function Apocalipse1() {
               keyExtractor={item => item.id}
               renderItem={({ item }) => (
                 <VerseItem
-                  data={item}
                   title={item.title}
-                  duration={item.time}
+                  duration={item.duration}
                   onPressContent={() => handleOpenDetails(item.id)}
                   onPressAddPlayList={() => {}}
                 />

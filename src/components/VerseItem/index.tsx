@@ -1,5 +1,6 @@
 import React from 'react'
 import { TouchableOpacity, TouchableOpacityProps } from 'react-native'
+
 import {
   Container,
   Image,
@@ -12,7 +13,7 @@ import {
 
 import ImagePhater from '../../assets/ImagePatherMusicPlayer.png'
 
-interface Props extends TouchableOpacityProps {
+export type Props = TouchableOpacityProps & {
   title: String
   duration: String
   onPressContent: () => void
@@ -22,8 +23,8 @@ interface Props extends TouchableOpacityProps {
 export function VerseItem({
   title,
   duration,
-  onPressContent,
   onPressAddPlayList,
+  onPressContent,
   ...rest
 }: Props) {
   return (
