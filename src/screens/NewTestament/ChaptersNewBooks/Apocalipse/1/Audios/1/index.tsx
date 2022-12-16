@@ -9,12 +9,9 @@ import { useAudioHelper } from '../../../../../../../hooks/audio-helper'
 
 import { Loading } from '../../../../../../../components/Loading'
 
-
-
 export function ApocalipseAudio1() {
   const [isLoading, setIsLoading] = useState(true)
   const [controlButton, setControlButton] = useState(false)
-  
 
   const player = useAudioHelper({
     listSounds: [
@@ -37,8 +34,6 @@ export function ApocalipseAudio1() {
   useEffect(() => {
     player.status === 'play' ? setControlButton(true) : setControlButton(false)
   }, [player.status])
-
-  
 
   if (isLoading) {
     return <Loading />
