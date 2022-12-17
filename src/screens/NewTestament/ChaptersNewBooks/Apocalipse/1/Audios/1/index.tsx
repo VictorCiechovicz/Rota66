@@ -35,10 +35,7 @@ export function ApocalipseAudio1() {
     player.status === 'play' ? setControlButton(true) : setControlButton(false)
   }, [player.status])
 
-  if (isLoading) {
-    return <Loading />
-  }
-
+  
   return (
     <Container>
       <Header onPress={handleGoback} />

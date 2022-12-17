@@ -13,7 +13,7 @@ align-items: center;
 
 padding-top: 50px;
 padding-bottom:38px;
-padding-left:30px;
+padding-left:20px;
 `;
 
 
