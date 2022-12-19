@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
 import {AntDesign} from '@expo/vector-icons'
-import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
+import {  RFValue } from "react-native-responsive-fontsize";
 
 export const Container = styled.View`
 width:100%;
@@ -15,7 +15,6 @@ padding-top: 50px;
 padding-bottom:38px;
 padding-left:20px;
 `;
-
 
 export const Button = styled.TouchableOpacity``;
 
