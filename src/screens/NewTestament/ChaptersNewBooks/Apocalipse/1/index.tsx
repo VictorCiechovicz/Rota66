@@ -42,60 +42,48 @@ export function Apocalipse1() {
     navigation.navigate('Details', { audiosId })
   }
 
-  useEffect(() => {
-    setIsLoading(true)
-
-    const audioInf = firestore()
-      .collection<AudioProps>('audios')
-      .where('livro', '==', 'Apocalipse')
-      .where('capitulo', '==', '1')
-      .onSnapshot(snapshot => {
-        const data = snapshot.docs.map(doc => {
-          const { title, capitulo, livro, playlist, duration, url } = doc.data()
-
-          return {
-            id: doc.id,
-            title,
-            capitulo,
-            livro,
-            playlist,
-            duration,
-            url
-          }
-        })
-        setAudios(data)
-        setIsLoading(false)
-      })
-    return audioInf
-  }, [estaNaTela])
-
-  if (isLoading) {
-    return <Loading />
-  }
+  // useEffect(() => {
+  //   setIsLoading(true)
+  //
+  //   const audioInf = firestore()
+  //     .collection<AudioProps>('audios')
+  //     .where('livro', '==', 'Apocalipse')
+  //     .where('capitulo', '==', '1')
+  //     .onSnapshot(snapshot => {
+  //       const data = snapshot.docs.map(doc => {
+  //         const { title, capitulo, livro, playlist, duration, url } = doc.data()
+  //
+  //         return {
+  //           id: doc.id,
+  //           title,
+  //           capitulo,
+  //           livro,
+  //           playlist,
+  //           duration,
+  //           url
+  //         }
+  //       })
+  //       setAudios(data)
+  //       setIsLoading(false)
+  //     })
+  //   return audioInf
+  // }, [estaNaTela])
+  //
+  // if (isLoading) {
+  //   return <Loading />
+  // }
 
   return (
     <Container>
       <Header onPress={handleGoback} title="Apocalipse-1" />
       <ScrollView showsVerticalScrollIndicator={false}>
         <ChappterWrapper>
-          {isLoading ? (
-            <Loading />
-          ) : (
-            <FlatList
-              data={audios}
-              keyExtractor={item => item.id}
-              renderItem={({ item }) => (
-                <VerseItem
-                  title={item.title}
-                  duration={item.duration}
-                  onPressContent={() => handleOpenDetails(item.id)}
-                  onPressAddPlayList={() => {}}
-                />
-              )}
-              showsVerticalScrollIndicator={false}
-              contentContainerStyle={{ paddingBottom: 100 }}
-            />
-          )}
+          <VerseItem
+            title="Estudo 200 - Crônicas 1-6"
+            duration="26"
+            onPressContent={handleOpenAudio}
+            onPressAddPlayList={() => {}}
+          />
         </ChappterWrapper>
       </ScrollView>
     </Container>
