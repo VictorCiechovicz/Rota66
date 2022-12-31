@@ -13,8 +13,6 @@ export declare global{
         OldTestament:undefined;
         Apocalipse:undefined;
         Apocalipse1:undefined;
-        ApocalipseAudio1:undefined;
-
         Details:{audiosId:string}
 
 

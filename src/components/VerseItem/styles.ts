@@ -3,21 +3,18 @@ import { RFValue } from "react-native-responsive-fontsize";
 import {MaterialIcons}from "@expo/vector-icons"
 
 
-export const Container = styled.View`
+export const Container = styled.TouchableOpacity`
 flex: 1;
 background-color: ${({theme})=>theme.colors.primary};
 flex-direction: row;
 align-items: center;
 
 margin-bottom: 9px;
+
+
 `;
 
 
-export const ContentWrapper = styled.TouchableOpacity`
-flex-direction: row;
-align-items: center;
-
-`;
 
 
 export const Image = styled.ImageBackground`

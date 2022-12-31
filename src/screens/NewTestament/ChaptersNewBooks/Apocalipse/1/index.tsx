@@ -7,20 +7,10 @@ import firestore from '@react-native-firebase/firestore'
 import { Container, ChappterWrapper } from './styles'
 import { Header } from '../../../../../components/Header'
 import { ScrollView } from 'react-native'
-import { VerseItem } from '../../../../../components/VerseItem'
+import { VerseItem, AudioProps } from '../../../../../components/VerseItem'
 import { Loading } from '../../../../../components/Loading'
 import { MaterialIcons } from '@expo/vector-icons'
 import { useTheme } from 'styled-components/native'
-
-export type AudioProps = {
-  id: string
-  title: string
-  capitulo: string
-  livro: string
-  playlist: string
-  duration: string
-  url: string
-}
 
 export function Apocalipse1() {
   const [isLoading, setIsLoading] = useState(true)
@@ -30,10 +20,6 @@ export function Apocalipse1() {
   const navigation = useNavigation()
   const estaNaTela = useIsFocused()
 
-  function handleOpenAudio() {
-    navigation.navigate('ApocalipseAudio1')
-  }
-
   function handleGoback() {
     navigation.goBack()
   }
@@ -42,48 +28,69 @@ export function Apocalipse1() {
     navigation.navigate('Details', { audiosId })
   }
 
-  // useEffect(() => {
-  //   setIsLoading(true)
-  //
-  //   const audioInf = firestore()
-  //     .collection<AudioProps>('audios')
-  //     .where('livro', '==', 'Apocalipse')
-  //     .where('capitulo', '==', '1')
-  //     .onSnapshot(snapshot => {
-  //       const data = snapshot.docs.map(doc => {
-  //         const { title, capitulo, livro, playlist, duration, url } = doc.data()
-  //
-  //         return {
-  //           id: doc.id,
-  //           title,
-  //           capitulo,
-  //           livro,
-  //           playlist,
-  //           duration,
-  //           url
-  //         }
-  //       })
-  //       setAudios(data)
-  //       setIsLoading(false)
-  //     })
-  //   return audioInf
-  // }, [estaNaTela])
-  //
-  // if (isLoading) {
-  //   return <Loading />
-  // }
+  useEffect(() => {
+    setIsLoading(true)
+
+    const audioInf = firestore()
+      .collection<AudioProps>('audios')
+      .where('livro', '==', 'Gn')
+      .where('capitulo', '==', '1')
+      .onSnapshot(snapshot => {
+        const data = snapshot.docs.map(doc => {
+          const {
+            titulo,
+            capitulo,
+            livro,
+            playlist,
+            time,
+            descricao,
+            tema,
+            url
+          } = doc.data()
+
+          return {
+            id: doc.id,
+            titulo,
+            capitulo,
+            livro,
+            playlist,
+            descricao,
+            tema,
+            time,
+            url
+          }
+        })
+        setAudios(data)
+        setIsLoading(false)
+      })
+    return audioInf
+  }, [estaNaTela])
+
+  if (isLoading) {
+    return <Loading />
+  }
 
   return (
     <Container>
       <Header onPress={handleGoback} title="Apocalipse-1" />
       <ScrollView showsVerticalScrollIndicator={false}>
         <ChappterWrapper>
-          <VerseItem
-            title="Estudo 200 - Crônicas 1-6"
-            duration="26"
-            onPressContent={handleOpenAudio}
-            onPressAddPlayList={() => {}}
-          />
+          {isLoading ? (
+            <Loading />
+          ) : (
+            <FlatList
+              data={audios}
+              keyExtractor={item => item.id}
+              renderItem={({ item }) => (
+                <VerseItem
+                  data={item}
+                  onPress={() => handleOpenDetails(item.id)}
+                />
+              )}
+              showsVerticalScrollIndicator={false}
+              contentContainerStyle={{ paddingBottom: 100 }}
+            />
+          )}
         </ChappterWrapper>
       </ScrollView>
     </Container>

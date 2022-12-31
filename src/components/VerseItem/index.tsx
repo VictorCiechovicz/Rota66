@@ -1,46 +1,36 @@
 import React from 'react'
 import { TouchableOpacity, TouchableOpacityProps } from 'react-native'
 
-import {
-  Container,
-  Image,
-  ContentWrapper,
-  ContentFootWrapper,
-  Title,
-  Duration,
-  Icon
-} from './styles'
+import { Container, Image, ContentFootWrapper, Title, Duration } from './styles'
 
 import ImagePhater from '../../assets/ImagePatherMusicPlayer.png'
+import { AudioFirestoreDTO } from '../../@types/DTOs/AudioDTO'
 
-export type Props = TouchableOpacityProps & {
-  title: String
-  duration: String
-  onPressContent: () => void
-  onPressAddPlayList: () => void
+export type AudioProps = AudioFirestoreDTO & {
+  id: string
+  titulo: String
+  time: String
+  capitulo: string
+  livro: string
+  descricao: string
+  playlist?: string
+  tema?: string
+  url: string
 }
 
-export function VerseItem({
-  title,
-  duration,
-  onPressAddPlayList,
-  onPressContent,
-  ...rest
-}: Props) {
+type Props = TouchableOpacityProps & {
+  data: AudioProps
+}
+
+export function VerseItem({ data, ...rest }: Props) {
   return (
-    <Container>
-      <ContentWrapper onPress={onPressContent} {...rest}>
-        <Image source={ImagePhater} />
+    <Container {...rest}>
+      <Image source={ImagePhater} />
 
-        <ContentFootWrapper>
-          <Title>{title}</Title>
-          <Duration>{duration} min</Duration>
-        </ContentFootWrapper>
-      </ContentWrapper>
-
-      <TouchableOpacity onPress={onPressAddPlayList} {...rest}>
-        <Icon name="playlist-add" />
-      </TouchableOpacity>
+      <ContentFootWrapper>
+        <Title>{data.titulo}</Title>
+        <Duration>{data.time} min</Duration>
+      </ContentFootWrapper>
     </Container>
   )
 }
